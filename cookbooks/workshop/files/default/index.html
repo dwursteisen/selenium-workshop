@@ -3,6 +3,22 @@
     <title>Workshop Selenium</title>
     <link rel="stylesheet" href="bootstrap.min.css" media="screen">
     <meta charset="utf-8">
+    <script src="jquery-2.1.1.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#enregistrer").click(function(event) {
+                $("#popup-ko").hide();
+                $("#popup-ok").show();
+
+            });
+
+            $("#annuler").click(function(event) {
+                $("#popup-ok").hide();
+                $("#popup-ko").show();
+
+            });
+        });
+    </script>
 </head>
 <body>
 <div class="container">
@@ -97,12 +113,18 @@
                     <div class="form-group">
                         <div class="col-lg-3">&nbsp;</div>
                         <div class="col-lg-8">
-                            <button class="btn btn-success">Enregistrer</button>
+                            <button class="btn btn-success" id="enregistrer">Enregistrer</button>
                             &nbsp;
-                            <button class="btn btn-danger">Annuler</button>
+                            <button class="btn btn-danger" id="annuler">Annuler</button>
 
                         </div>
 
+                    </div>
+                    <div class="alert alert-success" style="display: none" id="popup-ok">
+                        L'enregistrement s'est déroulé avec succès
+                    </div>
+                    <div class="alert alert-danger"  style="display: none" id="popup-ko">
+                        Oups ! Un problème est survenu
                     </div>
                 </fieldset>
             </form>
