@@ -91,6 +91,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # some recipes and/or roles.
   #
   config.vm.provision :chef_solo do |chef|
+	chef.add_recipe "workshop"
     chef.add_recipe "chromium"
 	chef.add_recipe "dotclear"
   end
