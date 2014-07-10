@@ -17,6 +17,18 @@
                 $("#popup-ko").show();
 
             });
+
+            $("#msgBox").click(function(event) {
+                confirm("La formation se passe bien ?");
+            });
+
+            $("#prompt").click(function(event) {
+                prompt("Quelle est la réponse à toutes nos questions ?");
+            });
+
+            $("#alert").click(function(event) {
+                alert("Et là, c'est le drame");
+            });
         });
     </script>
 </head>
@@ -24,7 +36,7 @@
 <div class="container">
 
     <h1>Workshop Selenium</h1>
-
+    <h2>1. Formulaire</h2>
     <div class="row">
         <div class="col-lg-6 well">
 
@@ -128,6 +140,18 @@
                     </div>
                 </fieldset>
             </form>
+        </div>
+    </div>
+    <h2>2. Gestion du Focus</h2>
+    <div class="row">
+        <div class="col-lg-6 well">
+            <button class="btn btn-info" id="alert">Alert</button>
+            &nbsp;
+            <button class="btn btn-primary" id="msgBox">MessageBox</button>
+            &nbsp;
+            <button class="btn btn-primary" id="prompt">Prompt</button>
+            &nbsp;
+            <a class="btn btn-warning" id="new_frame" href="index.php" target="_blank">Nouvelle Frame</a>
         </div>
     </div>
 </div>
