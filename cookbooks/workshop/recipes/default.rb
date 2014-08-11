@@ -1,4 +1,7 @@
+execute "echo 'grub-pc hold' | dpkg --set-selections"
+
 execute 'apt-get update'
+execute 'apt-get -y upgrade'
 
 directory "/var/www" do
   owner "root"
