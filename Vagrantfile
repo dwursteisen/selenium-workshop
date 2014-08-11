@@ -94,6 +94,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 	chef.add_recipe "workshop"
     chef.add_recipe "chromium"
 	chef.add_recipe "dotclear"
+	chef.add_recipe "selenium_tools"
   end
 
   # Enable provisioning with chef server, specifying the chef server URL,

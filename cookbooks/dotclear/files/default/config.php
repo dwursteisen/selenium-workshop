@@ -37,7 +37,7 @@ define('DC_MASTER_KEY','azerty');
 
 
 // Admin URL. You need to set it for some features.
-define('DC_ADMIN_URL','');
+define('DC_ADMIN_URL','http://localhost/dotclear/admin');
 
 // Admin mail from address. For password recovery and such.
 define('DC_ADMIN_MAILFROM','root@localhost');

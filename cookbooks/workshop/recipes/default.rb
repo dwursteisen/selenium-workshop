@@ -1,3 +1,12 @@
+execute 'apt-get update'
+
+directory "/var/www" do
+  owner "root"
+  group "root"
+  mode 00777
+  action :create
+end
+
 cookbook_file 'index.html' do
 	path "/var/www/index.html"
 	action :create

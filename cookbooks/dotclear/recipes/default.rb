@@ -47,3 +47,8 @@ cookbook_file 'config.php' do
 end
 
 
+service 'apache2' do
+  action :restart
+end
+
+
