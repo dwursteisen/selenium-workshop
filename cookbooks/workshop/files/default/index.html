@@ -9,13 +9,14 @@
             $("#enregistrer").click(function(event) {
                 $("#popup-ko").hide();
                 $("#popup-ok").show();
+				return false;
 
             });
 
             $("#annuler").click(function(event) {
                 $("#popup-ok").hide();
                 $("#popup-ko").show();
-
+				return false;
             });
 
             $("#msgBox").click(function(event) {
