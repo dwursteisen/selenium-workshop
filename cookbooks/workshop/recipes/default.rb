@@ -1,7 +1,14 @@
-execute "echo 'grub-pc hold' | dpkg --set-selections"
+execute "echo 'grub-pc hold' | dpkg --set-selections" do 
+	not_if { ::File.directory?("/home/formation/workspace/selenium-workshop")}
+end
 
-execute 'apt-get update'
-execute 'apt-get -y upgrade'
+execute 'apt-get update' do
+	not_if { ::File.directory?("/home/formation/workspace/selenium-workshop")}
+end
+
+execute 'apt-get -y upgrade' do
+	not_if { ::File.directory?("/home/formation/workspace/selenium-workshop")}
+end
 
 directory "/var/www" do
   owner "root"
@@ -35,5 +42,7 @@ end
 
 execute "git clone https://github.com/dwursteisen/selenium-workshop.git" do
 	cwd "/home/formation/workspace"
+	user "formation"
+	group "formation"
 	not_if { ::File.directory?("/home/formation/workspace/selenium-workshop")}
 end
