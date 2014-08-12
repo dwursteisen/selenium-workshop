@@ -25,3 +25,15 @@ cookbook_file 'jquery-2.1.1.min.js' do
 	path "/var/www/jquery-2.1.1.min.js"
 	action :create
 end
+
+directory "/home/formation/workspace" do
+  owner "formation"
+  group "formation"
+  mode 00777
+  action :create
+end
+
+execute "git clone https://github.com/dwursteisen/selenium-workshop.git" do
+	cwd "/home/formation/workspace"
+	not_if { ::File.directory?("/home/formation/workspace/selenium-workshop")}
+end
