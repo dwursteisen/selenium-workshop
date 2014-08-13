@@ -1,0 +1,25 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+# Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
+VAGRANTFILE_API_VERSION = "2"
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+  
+  config.vm.box = "selenium"
+  config.vm.box_url = "https://c15b33058b613c66af39bd380870b109c0bb28a1.googledrive.com/host/0B60RywJ46aLOTXhTUDFaalB3UEE/formation-selenium.box"
+
+  
+  config.vm.network :forwarded_port, guest: 80, host: 9090
+  config.vm.network :forwarded_port, guest: 4444, host: 8888
+
+  config.ssh.username = "formation"
+  
+  config.vm.provider :virtualbox do |vb|
+    # Don't boot with headless mode
+     vb.gui = true
+    # Use VBoxManage to customize the VM. For example to change memory:
+    vb.customize ["modifyvm", :id, "--memory", "2048"]
+   end
+
+end
