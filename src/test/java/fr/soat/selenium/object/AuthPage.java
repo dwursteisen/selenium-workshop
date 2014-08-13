@@ -1,21 +1,17 @@
 package fr.soat.selenium.object;
 
-import org.apache.commons.io.FileUtils;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
+import fr.soat.selenium.utils.Screenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-
-import java.io.File;
-import java.io.IOException;
+import org.openqa.selenium.support.PageFactory;
 
 /**
  * Created by formation on 13/08/14.
  */
 public class AuthPage {
 
-    private final Screenshoot record;
+    private final Screenshot record;
     private final WebDriver driver;
     @FindBy(id = "user_id")
     private WebElement user;
@@ -24,7 +20,7 @@ public class AuthPage {
 
     public AuthPage(WebDriver driver) {
         this.driver = driver;
-        record = new Screenshoot(driver);
+        record = new Screenshot(driver, this);
     }
 
     public void login(String user, String password) {
@@ -33,28 +29,13 @@ public class AuthPage {
 
     }
 
-    public void perform() {
+    public Admin perform() {
         this.password.submit();
+        return PageFactory.initElements(driver, Admin.class);
     }
 
     public void screenshot(String filename) {
         record.saveAt(filename);
     }
 
-    public static class Screenshoot {
-        private WebDriver driver;
-
-        public Screenshoot(WebDriver driver) {
-            this.driver = driver;
-        }
-
-        public void saveAt(String filename) {
-            File screenshotAs = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-            try {
-                FileUtils.copyFile(screenshotAs, new File(filename));
-            } catch (IOException e) {
-                ; // do nothing
-            }
-        }
-    }
 }

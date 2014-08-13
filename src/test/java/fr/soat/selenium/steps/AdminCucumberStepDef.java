@@ -25,7 +25,7 @@ public class AdminCucumberStepDef {
 
     @Before
     public void setUpSteps() throws MalformedURLException {
-        DesiredCapabilities capability = DesiredCapabilities.internetExplorer();
+        DesiredCapabilities capability = DesiredCapabilities.phantomjs();
 
         driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), capability);
         driver = new Augmenter().augment(driver);
@@ -40,7 +40,7 @@ public class AdminCucumberStepDef {
 
     @Etantdonné("^un utilisateur avec le login \"([^\"]*)\" et le mot de passe \"([^\"]*)\"$")
     public void un_utilisateur_avec_le_login_et_le_mot_de_passe(String user, String pwd) throws Throwable {
-        driver.get("http://localhost:9090/dotclear/admin");
+        driver.get("http://localhost/dotclear/admin");
         authPage = PageFactory.initElements(driver, AuthPage.class);
         authPage.login(user, pwd);
     }
