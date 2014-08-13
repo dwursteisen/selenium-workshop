@@ -54,4 +54,12 @@ public class BlogEntry {
         return PageFactory.initElements(driver, BlogPost.class);
     }
 
+    public void fillTitle(String title) {
+        this.title.sendKeys(title);
+    }
+
+    public void fillContent(String content) {
+        this.content.sendKeys(content);
+
+    }
 }

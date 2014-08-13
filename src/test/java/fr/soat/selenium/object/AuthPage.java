@@ -1,6 +1,5 @@
 package fr.soat.selenium.object;
 
-import fr.soat.selenium.utils.Screenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -11,7 +10,6 @@ import org.openqa.selenium.support.PageFactory;
  */
 public class AuthPage {
 
-    private final Screenshot record;
     private final WebDriver driver;
     @FindBy(id = "user_id")
     private WebElement user;
@@ -20,7 +18,6 @@ public class AuthPage {
 
     public AuthPage(WebDriver driver) {
         this.driver = driver;
-        record = new Screenshot(driver, this);
     }
 
     public void login(String user, String password) {
@@ -34,8 +31,5 @@ public class AuthPage {
         return PageFactory.initElements(driver, Admin.class);
     }
 
-    public void screenshot(String filename) {
-        record.saveAt(filename);
-    }
 
 }
