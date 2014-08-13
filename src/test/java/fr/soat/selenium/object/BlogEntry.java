@@ -54,19 +54,4 @@ public class BlogEntry {
         return PageFactory.initElements(driver, BlogPost.class);
     }
 
-    public static class BlogPost {
-        private final WebDriver driver;
-
-        @CacheLookup
-        @FindBy(className = "post-title")
-        private WebElement postTitle;
-
-        public BlogPost(WebDriver driver) {
-            this.driver = driver;
-        }
-
-        public String getPostTitle() {
-            return postTitle.getText();
-        }
-    }
 }

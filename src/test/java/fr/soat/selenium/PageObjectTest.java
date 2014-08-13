@@ -1,8 +1,6 @@
 package fr.soat.selenium;
 
-import fr.soat.selenium.object.Admin;
-import fr.soat.selenium.object.AuthPage;
-import fr.soat.selenium.object.BlogEntry;
+import fr.soat.selenium.object.*;
 import fr.soat.selenium.utils.Screenshot;
 import org.junit.After;
 import org.junit.Assert;
@@ -42,6 +40,7 @@ public class PageObjectTest {
     @Test
     public void shouldCreateBlogPost() {
         driver.get(baseUrl + "admin/auth.php");
+
         AuthPage authPage = PageFactory.initElements(driver, AuthPage.class);
         authPage.login("azerty", "azerty");
         screenshot.saveAt("beforeLogin.png");
@@ -54,10 +53,32 @@ public class PageObjectTest {
         screenshot.saveAt("blogFilled.png");
         blogEntry.publish();
         screenshot.saveAt("blogPublished.png");
-        BlogEntry.BlogPost post = blogEntry.goToBlogPost();
+        BlogPost post = blogEntry.goToBlogPost();
         screenshot.saveAt("blogPost.png");
         Assert.assertEquals("Ceci est un titre", post.getPostTitle());
 
     }
+
+    @Test
+    public void shouldAddCommentOnBlogPost() {
+        driver.get(baseUrl + "admin/auth.php");
+        AuthPage authPage = PageFactory.initElements(driver, AuthPage.class);
+        authPage.login("azerty", "azerty");
+        Admin admin = authPage.perform();
+
+        BlogEntry blogEntry = admin.newBlogPost();
+
+        blogEntry.fillBlog("Post With Comment", "Fill your comment bellow !");
+        blogEntry.publish();
+        BlogPost post = blogEntry.goToBlogPost();
+
+        BlogComment blogComment = post.getComment();
+        blogComment.fillCommentaire("username", "email@gmail.com", "comment");
+        screenshot.saveAt("blogComment.png");
+        blogComment.perform();
+        screenshot.saveAt("blogCommentAdded.png");
+        // TODO : check if the comment is here and well formed
+    }
+
 
 }
