@@ -132,3 +132,6 @@ hs_err_pid*
 
 # vagrant
 .vagrant
+
+# screenshot
+*.png
