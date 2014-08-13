@@ -34,11 +34,6 @@ public class WebDriverTest {
 //
 //        driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), capability);
 
-//
-//
-//        System.out.println(capability.getCapability("takesScreenshot"));
-
-
         driver = new ChromeDriver();
 
         screenshot = new Screenshot(driver, this);
@@ -85,9 +80,12 @@ public class WebDriverTest {
         driver.findElement(By.name("wup")).click();
 
         driver.findElement(By.linkText("Go to site")).click();
+
+        // handlers tricks
         Set<String> handles = driver.getWindowHandles();
         Iterator<String> iterator = handles.iterator();
         iterator.next();
+
         driver.switchTo().window(iterator.next());
         screenshot.saveAt("BlogMenuUpdate.png");
 
