@@ -30,3 +30,8 @@ file "/usr/local/eclipse/eclipse.ini" do
   action :delete
 end
 
+cookbook_file "eclipse.ini" do
+	path "/usr/local/eclipse/eclipse.ini"
+	action :create_if_missing
+end
+
