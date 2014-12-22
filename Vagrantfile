@@ -10,11 +10,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # please see the online documentation at vagrantup.com.
 
  # Every Vagrant virtual environment requires a box to build off of.
-  config.vm.box = "ubuntu-12.04.3-desktop-amd64"
+  config.vm.box = "vm-formation"
 
   # The url from where the 'config.vm.box' box will be fetched if it
   # doesn't already exist on the user's system.
-  config.vm.box_url = "https://c15b33058b613c66af39bd380870b109c0bb28a1.googledrive.com/host/0B60RywJ46aLOTXhTUDFaalB3UEE/ubuntu-12.04.3-desktop-amd64.box"
+  config.vm.box_url = "https://c15b33058b613c66af39bd380870b109c0bb28a1.googledrive.com/host/0B60RywJ46aLOTXhTUDFaalB3UEE/vm-formation.box"
 
   # Create a forwarded port mapping which allows access to a specific port
   # within the machine from a port on the host machine. In the example below,
